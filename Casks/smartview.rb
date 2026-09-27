@@ -16,15 +16,16 @@ cask "smartview" do
   end
 
   name "smartview"
-  desc "Cross-platform terminal UI for monitoring drive health via smartmontools."
+  desc "Cross-platform terminal UI for monitoring drive health via smartmontools"
   homepage "https://github.com/trm42/smartview"
 
   livecheck do
     skip "Auto-generated on release."
   end
+
   depends_on formula: [
-      "smartmontools",
-    ]
+    "smartmontools",
+  ]
 
   binary "smartview"
 
