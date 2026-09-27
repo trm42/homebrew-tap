@@ -28,9 +28,12 @@ cask "smartview" do
 
   binary "smartview"
 
-  postflight do
-    if system_command("/usr/bin/xattr", args: ["-h"]).exit_status == 0
-      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/smartview"]
+  postflight_steps do
+    on_macos do
+      run "/usr/bin/xattr",
+          args:           ["-dr", "com.apple.quarantine", "{{staged_path}}/smartview"],
+          writable_paths: ["{{staged_path}}/smartview"],
+          must_succeed:   false
     end
   end
 
