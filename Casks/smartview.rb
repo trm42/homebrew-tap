@@ -9,19 +9,17 @@ cask "smartview" do
     end
   end
 
-  version "0.6.0"
+  version "0.6.1"
 
   on_macos do
-    on_arm do
-      sha256 "50cd698ffa044016adfaeb65404a46fc601ee8fe24e6a4122744a3e43e381552"
-      url "https://github.com/trm42/smartview/releases/download/v#{version}/smartview_#{version}_darwin_arm64.tar.gz"
-    end
+    depends_on arch: :arm64
+    sha256 "b90a1a9127fc3afd0ec8ed1797996c242efad9f5d59a0d9246828de5fde7633c"
+    url "https://github.com/trm42/smartview/releases/download/v#{version}/smartview_#{version}_darwin_arm64.tar.gz"
   end
   on_linux do
-    on_intel do
-      sha256 "cbd25b8f82a1ac7b01a03b06f01e6393d81e6275a226b5bb7e451181a5c19fc7"
-      url "https://github.com/trm42/smartview/releases/download/v#{version}/smartview_#{version}_linux_amd64.tar.gz"
-    end
+    depends_on arch: :x86_64
+    sha256 "2a55e3d446841223b39ddf88a709b7fb2134703f980b195cb3b59bb1321a049a"
+    url "https://github.com/trm42/smartview/releases/download/v#{version}/smartview_#{version}_linux_amd64.tar.gz"
   end
 
   name "smartview"
@@ -37,5 +35,5 @@ cask "smartview" do
 
   binary "smartview"
 
-  # No zap stanza required
+  zap :not_required
 end
